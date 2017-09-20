@@ -1,10 +1,11 @@
 <h2>Store</h2>
-<p>Hello world!</p>
+<h3>Total products: {{ productsList.length }}</h3>
 
 <ul class="products-list">
     <li class="product-item" ng-repeat="product in productsList">
-        {{ product }}
+        {{ product.ProductTitle }}
     </li>
 </ul>
 
-<div> {{ productsList | json }}</div>
+
+<!--<div> {{ productsList | json }}</div>-->

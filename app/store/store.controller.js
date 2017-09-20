@@ -12,6 +12,7 @@
         }])
 
         .controller('StoreCtrl', ['$scope', 'productsFactory', '$http', function($scope, productsFactory, $http) {
+            $scope.productsList = [];
 
             getProducts();
 
@@ -22,7 +23,17 @@
 
                 function getProductsComplete(response) {
                     console.log('data received', response.data.Stores);
-                    $scope.productsList = response.data.Stores;
+                    $scope.storesList = response.data.Stores;
+
+                    $scope.storesList.forEach(function (store, index) {
+                        store.Products.forEach(function (product) {
+                            console.log(product);
+                            $scope.productsList.push(product);
+                        });
+                        // console.log(store, index);
+                    });
+
+                    console.log('finally', $scope.productsList);
                 }
 
                 function getProductsFailed(error) {
