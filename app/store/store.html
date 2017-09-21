@@ -1,26 +1,37 @@
 <main class="store-container">
     <h2>Store</h2>
 
+    <div>{{ priceFilters[priceFilters.length - 1].value | json}}</div>
+
+    <div ng-repeat="filter in priceFilters">
+        {{ filter | json  }}
+    </div>
+
     <ul class="filters-list">
         <li class="filter">
-            <select id="priceFilter" ng-model="priceFilter">
-                <option ng-repeat="price in priceFilters" value="{{ price.Value }}">{{ price.DisplayText }}</option>
+            <!--<select id="priceFilter" ng-model="priceFilterModel" ng-init="priceFilterModel = priceFilters[priceFilters.length - 1]">-->
+                <!--<option ng-repeat="price in priceFilters" value="{{ price.Value }}">{{ price.DisplayText }}</option>-->
+            <!--</select>-->
+
+            <select id="priceFilter" ng-model="priceFilterModel"
+                    ng-options="price.value as price.displayText for price in priceFilters">
             </select>
 
-            <select id="genderFilter">
-                <option value="">Both</option>
-                <option ng-repeat="gender in genderFilters" value="{{ gender.Value }}">{{ gender.DisplayText }}</option>
+            <select id="genderFilter" ng-model="genderFilterModel">
+                <!--<option value="">Both</option>-->
+                <option ng-repeat="gender in genderFilters" value="{{ gender.value }}">{{ gender.displayText }}</option>
             </select>
         </li>
     </ul>
 
 
     <ul class="products-list">
-        <li class="product-item" ng-repeat="product in productsList">
+        <li class="product-item" ng-repeat="product in productsList | filter:priceFilter | filter:genderFilter">
             <figure class="image-container">
                 <img class="product-image" src="{{ product.image }}" alt="{{ product.title }}">
             </figure>
             <h4 class="product-store">{{ product.storeName }}</h4>
+            <p class="product-price">{{ product.priceLabel}}</p>
             <h5 class="product-title">{{ product.title }}</h5>
         </li>
     </ul>

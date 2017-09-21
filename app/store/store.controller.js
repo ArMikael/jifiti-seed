@@ -16,19 +16,17 @@
 
             productsFactory.getProducts();
 
-            // $scope.priceFilter = function (product) {
-            //     return product.price;
-            // }
+            //$scope.priceFilterModel = $rootScope.priceFilters[$rootScope.priceFilters.length - 1];
 
-            // $scope.handlePriceFilter = function () {
-            //     var filteredProducts = $rootScope.storesList.map(function (store) {
-            //        return store.products.map(function (product) {
-            //           return product.price < $scope.priceFilter;
-            //        });
-            //     });
-            //
-            //     $rootScope.storesList = filteredProducts;
-            // }
+            $scope.priceFilter = function (product) {
+                //console.log('filter product: ', product);
+                return product.price < $scope.priceFilterModel;
+            };
+
+            $scope.genderFilter = function (product) {
+                return product.tags.indexOf(parseInt($scope.genderFilterModel)) > -1;
+            };
+
 
         }]);
 })( );

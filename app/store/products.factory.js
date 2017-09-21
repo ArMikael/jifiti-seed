@@ -18,11 +18,36 @@
 
             function getProductsComplete(response) {
                 var stores = response.data.Stores;
-                var priceFilters = response.data.PriceFilter;
-                var genderFilters = response.data.GenderFilter;
+                $rootScope.priceFilters = priceFiltersFactory(response.data.PriceFilter);
+                $rootScope.genderFilters = genderFiltersFactory(response.data.GenderFilter);
 
-                $rootScope.priceFilters = priceFilters;
-                $rootScope.genderFilters = genderFilters;
+                //$rootScope.genderFilters.push(genderBoth);
+
+                function priceFiltersFactory(priceFilters) {
+                    return priceFilters.map(function(price){
+                        return {
+                            value: price.Value,
+                            values: price.Values,
+                            displayText: price.DisplayText,
+                            tagId: price.TagId,
+                            type: price.Type,
+                            order: price.Order
+                        }
+                    });
+                }
+
+                function genderFiltersFactory(gendersFilters) {
+                    return gendersFilters.map(function (gender) {
+                       return {
+                           tagId: gender.TagId,
+                           type: gender.Type,
+                           value: gender.Value,
+                           values: gender.Values,
+                           displayText: gender.DisplayText,
+                           order: gender.Order
+                       }
+                    });
+                }
 
 
                 function Product (product, store) {
