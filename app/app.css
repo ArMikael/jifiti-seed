@@ -28,6 +28,7 @@
 /* CSS Reset */
 ul {
   list-style: none;
+  padding: 0;
 }
 
 h4, h5 {
@@ -40,6 +41,16 @@ figure {
 }
 
 /* Main Styles */
+.store-container {
+  width: 86%;
+  margin: 0 auto;
+}
+
+.stores-list {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .product-item {
   width: 24%;
   display: inline-block;

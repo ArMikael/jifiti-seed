@@ -1,13 +1,13 @@
-<h2>Store</h2>
+<main class="store-container">
+    <h2>Store</h2>
 
-<ul class="stores-list" ng-repeat="store in storesList">
-    <li class="product-item" ng-repeat="product in store.products">
-        <!--<div class="product-container">-->
+    <ul class="stores-list" ng-repeat="store in storesList">
+        <li class="product-item" ng-repeat="product in store.products">
             <figure class="image-container">
                 <img class="product-image" src="{{ product.image }}" alt="{{ product.title }}">
             </figure>
             <h4 class="product-store">{{ store.name }}</h4>
             <h5 class="product-title">{{ product.title }}</h5>
-        <!--</div>-->
-    </li>
-</ul>
+        </li>
+    </ul>
+</main>
