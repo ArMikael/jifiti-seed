@@ -11,10 +11,24 @@
             });
         }])
 
-        .controller('StoreCtrl', ['$scope', 'productsFactory',
-            function($scope, productsFactory) {
+        .controller('StoreCtrl', ['$scope', 'productsFactory', '$rootScope',
+            function($scope, productsFactory, $rootScope) {
 
             productsFactory.getProducts();
+
+            // $scope.priceFilter = function (product) {
+            //     return product.price;
+            // }
+
+            // $scope.handlePriceFilter = function () {
+            //     var filteredProducts = $rootScope.storesList.map(function (store) {
+            //        return store.products.map(function (product) {
+            //           return product.price < $scope.priceFilter;
+            //        });
+            //     });
+            //
+            //     $rootScope.storesList = filteredProducts;
+            // }
 
         }]);
 })( );

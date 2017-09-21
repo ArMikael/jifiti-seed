@@ -4,8 +4,6 @@
     angular.module('jifitiApp')
         .factory('productsFactory', productsFactory);
 
-    //productsFactory.$inject = ['$http'];
-
     function productsFactory($http, $rootScope) {
         console.log('FACTORY');
 
@@ -20,26 +18,14 @@
 
             function getProductsComplete(response) {
                 var stores = response.data.Stores;
+                var priceFilters = response.data.PriceFilter;
+                var genderFilters = response.data.GenderFilter;
 
-                $rootScope.storesList = stores.map(function(store) {
-                    return new StoreFactory(store);
-                });
+                $rootScope.priceFilters = priceFilters;
+                $rootScope.genderFilters = genderFilters;
 
-                function StoreFactory(store){
-                    return {
-                        name: store.StoreName,
-                        logo: store.StoreLogo,
-                        products: createProductsList(store.Products)
-                    }
-                }
 
-                function createProductsList(products) {
-                    return products.map(function (product) {
-                        return new Product(product);
-                    });
-                }
-
-                function Product (product) {
+                function Product (product, store) {
                     return {
                         id: product.ProductId,
                         title: product.ProductTitle,
@@ -47,11 +33,26 @@
                         image: product.ProductImage,
                         price: product.Price,
                         priceLabel: product.PriceLabel,
-                        tags: product.ProductTags
+                        tags: product.ProductTags,
+                        storeName: store.name,
+                        storeLogo: store.logo
                     }
                 }
 
-                console.log('finally', $rootScope.storesList);
+                var storeProducts = stores.map(function(store) {
+                    var storeObj = {
+                        name: store.StoreName,
+                        logo: store.StoreLogo
+                    };
+
+                    return store.Products.map(function (product) {
+                        return new Product(product, storeObj);
+                    });
+                });
+
+                // Merging stores products arrays in one array
+                $rootScope.productsList  = [].concat.apply([], storeProducts);
+
             }
 
             function getProductsFailed(error) {
