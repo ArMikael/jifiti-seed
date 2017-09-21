@@ -23,3 +23,40 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+
+/* CSS Reset */
+ul {
+  list-style: none;
+}
+
+h4, h5 {
+  margin: 0;
+  padding: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Main Styles */
+.product-item {
+  width: 24%;
+  display: inline-block;
+  vertical-align: top;
+  /*height: 100px;*/
+  /*overflow: hidden;*/
+}
+
+.product-store,
+.product-title {
+  text-align: center;
+}
+
+.image-container {
+  width: 180px;
+}
+
+.product-image {
+  width: 100%;
+}
