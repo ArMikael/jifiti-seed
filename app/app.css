@@ -71,3 +71,7 @@ figure {
 .product-image {
   width: 100%;
 }
+
+option[value="? undefined:undefined ?"] {
+  display:none;
+}

@@ -1,24 +1,14 @@
 <main class="store-container">
     <h2>Store</h2>
 
-    <div>{{ priceFilters[priceFilters.length - 1].value | json}}</div>
-
-    <div ng-repeat="filter in priceFilters">
-        {{ filter | json  }}
-    </div>
-
     <ul class="filters-list">
         <li class="filter">
-            <!--<select id="priceFilter" ng-model="priceFilterModel" ng-init="priceFilterModel = priceFilters[priceFilters.length - 1]">-->
-                <!--<option ng-repeat="price in priceFilters" value="{{ price.Value }}">{{ price.DisplayText }}</option>-->
-            <!--</select>-->
-
-            <select id="priceFilter" ng-model="priceFilterModel"
-                    ng-options="price.value as price.displayText for price in priceFilters">
+            <!--ng-init="priceFilterModel=priceFilters[priceFilters.length - 1].value-->
+            <select id="priceFilter" ng-model="priceFilterModel">
+                <option ng-repeat="price in priceFilters" value="{{ price.value }}">{{ price.displayText }}</option>
             </select>
 
             <select id="genderFilter" ng-model="genderFilterModel">
-                <!--<option value="">Both</option>-->
                 <option ng-repeat="gender in genderFilters" value="{{ gender.value }}">{{ gender.displayText }}</option>
             </select>
         </li>

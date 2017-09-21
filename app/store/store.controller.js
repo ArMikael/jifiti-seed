@@ -13,13 +13,12 @@
 
         .controller('StoreCtrl', ['$scope', 'productsFactory', '$rootScope',
             function($scope, productsFactory, $rootScope) {
+            $scope.priceFilterModel = '9999';
+            $scope.genderFilterModel = '3';
 
             productsFactory.getProducts();
 
-            //$scope.priceFilterModel = $rootScope.priceFilters[$rootScope.priceFilters.length - 1];
-
             $scope.priceFilter = function (product) {
-                //console.log('filter product: ', product);
                 return product.price < $scope.priceFilterModel;
             };
 
