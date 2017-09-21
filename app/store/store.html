@@ -1,11 +1,15 @@
 <h2>Store</h2>
-<h3>Total products: {{ productsList.length }}</h3>
+<!--<h3>Total products: {{ productsList.length }}</h3>-->
 
-<ul class="products-list">
-    <li class="product-item" ng-repeat="product in productsList">
-       {{ product.id }} - {{ product.title }}
-    </li>
-</ul>
+<div class="stores-list" ng-repeat="store in storesList">
+    <h3 class="store-name">{{ store.name }}</h3>
+    <ul class="products-list" ng-repeat="product in store.products">
+        <li class="product-item">
+            <img src="{{ product.image }}" alt="">
+            <h4>{{ product.title }}</h4>
+        </li>
+    </ul>
+</div>
 
 
 <!--<div> {{ productsList | json }}</div>-->

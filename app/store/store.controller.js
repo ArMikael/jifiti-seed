@@ -12,7 +12,10 @@
         }])
 
         .controller('StoreCtrl', ['$scope', 'productsFactory', '$http', function($scope, productsFactory, $http) {
+
+            $scope.storesList = [];
             $scope.productsList = [];
+
 
             getProducts();
 
@@ -22,8 +25,25 @@
                     .catch(getProductsFailed);
 
                 function getProductsComplete(response) {
-                    console.log('data received', response.data.Stores);
-                    $scope.storesList = response.data.Stores;
+                    var stores = response.data.Stores;
+
+                    $scope.storesList = stores.map(function(store) {
+                        return new StoreFactory(store);
+                    });
+
+                    function StoreFactory(store){
+                        return {
+                            name: store.StoreName,
+                            logo: store.StoreLogo,
+                            products: createProductsList(store.Products)
+                        }
+                    }
+
+                    function createProductsList(products) {
+                        return products.map(function (product) {
+                            return new Product(product);
+                        });
+                    }
 
                     function Product (product) {
                         return {
@@ -32,21 +52,10 @@
                             description: product.Description,
                             image: product.ProductImage,
                             price: product.Price,
-                            priceLabel: product.PriceLabel
+                            priceLabel: product.PriceLabel,
+                            tags: product.ProductTags
                         }
                     }
-
-
-                    function createProduct(product) {
-                        var clientProduct = new Product(product);
-                        $scope.productsList.push(clientProduct);
-                    }
-
-                    $scope.storesList.forEach(function (store, index) {
-                        store.Products.forEach(function (product) {
-                            createProduct(product);
-                        });
-                    });
 
                     console.log('finally', $scope.productsList);
                 }
@@ -56,9 +65,5 @@
                 }
             }
 
-
-            // $scope.productsList = productsFactory.getProducts();
-            // console.log('DATA in CTRL: ', $scope.productsList);
-            //['One', 'Two', 'Three'];
         }]);
 })( );
