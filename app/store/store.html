@@ -17,9 +17,9 @@
 
     <ul class="products-list">
         <li class="product-item" ng-repeat="product in productsList | filter:priceFilter | filter:genderFilter">
-            <figure class="image-container">
+            <div class="image-container">
                 <img class="product-image" src="{{ product.image }}" alt="{{ product.title }}">
-            </figure>
+            </div>
             <h4 class="product-store">{{ product.storeName }}</h4>
             <p class="product-price">{{ product.priceLabel}}</p>
             <h5 class="product-title">{{ product.title }}</h5>
