@@ -14,17 +14,13 @@
 
                 <!--</div>-->
 
-                <!--<div class="drop-down-container">-->
-                    <!--<select id="genderFilter" ng-model="genderFilterModel" class="product-filter gender-filter">-->
-                        <!--<option ng-repeat="gender in genderFilters" value="{{ gender.value }}">{{ gender.displayText }}</option>-->
-                    <!--</select>-->
-                <!--</div>-->
-
-                <select ng-model="priceFilterMod" class="product-filter price-filter">
+                <select ng-model="priceFilterModel" class="product-filter price-filter">
+                    <option value="0" disabled selected>Budget</option>
                     <option ng-repeat="price in priceFiltersList" value="{{ price.value }}">{{ price.text }}</option>
                 </select>
 
-                <select ng-model="genderFilterMod" class="product-filter gender-filter">
+                <select ng-model="genderFilterModel" class="product-filter gender-filter">
+                    <option value="0" disabled selected>Gender</option>
                     <option ng-repeat="gender in genderFiltersList" value="{{ gender.value }}">{{ gender.text }}</option>
                 </select>
             </li>
