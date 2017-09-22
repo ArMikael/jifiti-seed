@@ -5,12 +5,22 @@
         <ul class="filters-list">
             <li class="filter">
                 <!--ng-init="priceFilterModel=priceFilters[priceFilters.length - 1].value-->
-                <select id="priceFilter" ng-model="priceFilterModel" class="product-filter price-filter">
-                    <option ng-repeat="price in priceFilters" value="{{ price.value }}">{{ price.displayText }}</option>
-                </select>
+                <!--<div class="drop-down-container">-->
+                    <!--<div class="price-filter-header" ng-click="showPriceFilter = !showPriceFilter">Budget</div>-->
+                    <select id="priceFilter" ng-model="priceFilterModel"
+                            class="product-filter price-filter">
+                        <option ng-repeat="price in priceFilters" value="{{ price.value }}">{{ price.displayText }}</option>
+                    </select>
+                <!--</div>-->
 
-                <select id="genderFilter" ng-model="genderFilterModel" class="product-filter gender-filter">
-                    <option ng-repeat="gender in genderFilters" value="{{ gender.value }}">{{ gender.displayText }}</option>
+                <!--<div class="drop-down-container">-->
+                    <select id="genderFilter" ng-model="genderFilterModel" class="product-filter gender-filter">
+                        <option ng-repeat="gender in genderFilters" value="{{ gender.value }}">{{ gender.displayText }}</option>
+                    </select>
+                <!--</div>-->
+
+                <select id="" ng-model="priceFilterMod">
+                    <option ng-repeat="price in priceFiltersList" value="{{ price.value }}">{{ price.text }}</option>
                 </select>
             </li>
         </ul>
@@ -18,7 +28,7 @@
 
 
     <ul class="products-list">
-        <li class="product-item" ng-repeat="product in productsList | filter:priceFilter | filter:genderFilter">
+        <li class="product-item" ng-repeat="product in productsList | filter:priceFilterFilter | filter:genderFilter">
             <div class="image-container">
                 <img class="product-image" src="{{ product.image }}" alt="{{ product.title }}">
             </div>
