@@ -48,10 +48,11 @@ figure {
 
 .store-container {
   width: 86%;
+  min-width: 768px;
   margin: 0 auto;
   background-color: #fff;
   border: 1px solid #cccccc;
-  border-top: 1px solid #fff;
+  border-top: 5px solid #0073bb;
   padding: 0 20px;
 }
 
@@ -66,6 +67,7 @@ figure {
   font-style: italic;
   margin-top: 10px;
   padding-left: 40px;
+  font-family: serif;
 }
 
 .product-filter {
@@ -110,7 +112,7 @@ figure {
 .products-list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 580px;
   overflow: auto;
 }
@@ -126,7 +128,7 @@ figure {
   display: inline-block;
   vertical-align: top;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 46px;
   border-radius: 6px;
 }
 
@@ -165,3 +167,99 @@ figure {
   max-width: 90%;
   max-height: 100%;
 }
+
+.footer {
+  width: 86%;
+  padding: 0 20px;
+  margin: 0 auto;
+  height: 60px;
+  background-color: #0073bb;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer-menu {
+  margin: 0;
+  min-width: 768px;
+}
+
+.menu-item {
+  display: inline-block;
+  max-width: 230px;
+  width: 25%;
+  position: relative;
+  color: white;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 50px;
+}
+
+.menu-item:before {
+  text-align: center;
+}
+
+.menu-item:nth-child(1):before {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  left: -2px;
+  top: 10px;
+  content: '1';
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  color: #0073bb;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.menu-item:not(:last-child):after {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  content: '›';
+  right: 46px;
+  top: 5px;
+  width: 16px;
+  height: 46px;
+  color: #fff;
+  font-size: 84px;
+  line-height: 36px;
+  font-family: serif;
+}
+
+.menu-item:nth-child(2):before {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  left: -2px;
+  top: 10px;
+  content: '2';
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  color: #0073bb;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.menu-item:nth-child(3):before {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  content: '3';
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  color: #0073bb;
+  font-size: 24px;
+  line-height: 36px;
+}
+
