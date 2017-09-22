@@ -8,11 +8,12 @@
         console.log('FACTORY');
 
         return {
-            getStoreData: getStoreData,
-            getPriceFilters: getPriceFilters
+            getStoreData: fnGetStoreData,
+            getPriceFilters: fnGetPriceFilters,
+            getGenderFilters: fnGetGenderFilters
         };
 
-        function getStoreData () {
+        function fnGetStoreData () {
             $http.get('./data/products.json')
                 .then(getStoreDataComplete)
                 .catch(getStoreDataFailed);
@@ -83,7 +84,7 @@
             }
         }
 
-        function getPriceFilters() {
+        function fnGetPriceFilters() {
             return [
                 {
                     value: '0,25',
@@ -121,11 +122,31 @@
                     maxPrice: 1000000
                 },
                 {
-                    value: '0,1000000',
+                    value: '0',
                     text: 'All',
                     type: 'budget',
                     minPrice: 0,
                     maxPrice: 1000000
+                }
+            ];
+        }
+
+        function fnGetGenderFilters() {
+            return [
+                {
+                    value: 3,
+                    text: 'Boy',
+                    type: 'gender'
+                },
+                {
+                    value: 4,
+                    text: 'Girl',
+                    type: 'gender'
+                },
+                {
+                    value: 0,
+                    text: 'Both',
+                    type: 'gender'
                 }
             ];
         }
