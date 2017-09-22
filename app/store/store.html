@@ -1,18 +1,20 @@
 <main class="store-container">
-    <h2>Store</h2>
+    <header class="header">
+        <h1 class="main-title">Jifiti Store</h1>
 
-    <ul class="filters-list">
-        <li class="filter">
-            <!--ng-init="priceFilterModel=priceFilters[priceFilters.length - 1].value-->
-            <select id="priceFilter" ng-model="priceFilterModel">
-                <option ng-repeat="price in priceFilters" value="{{ price.value }}">{{ price.displayText }}</option>
-            </select>
+        <ul class="filters-list">
+            <li class="filter">
+                <!--ng-init="priceFilterModel=priceFilters[priceFilters.length - 1].value-->
+                <select id="priceFilter" ng-model="priceFilterModel" class="product-filter price-filter">
+                    <option ng-repeat="price in priceFilters" value="{{ price.value }}">{{ price.displayText }}</option>
+                </select>
 
-            <select id="genderFilter" ng-model="genderFilterModel">
-                <option ng-repeat="gender in genderFilters" value="{{ gender.value }}">{{ gender.displayText }}</option>
-            </select>
-        </li>
-    </ul>
+                <select id="genderFilter" ng-model="genderFilterModel" class="product-filter gender-filter">
+                    <option ng-repeat="gender in genderFilters" value="{{ gender.value }}">{{ gender.displayText }}</option>
+                </select>
+            </li>
+        </ul>
+    </header>
 
 
     <ul class="products-list">
