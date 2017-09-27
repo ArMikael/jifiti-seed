@@ -5,7 +5,7 @@
         .factory('productsFactory', productsFactory);
 
     function productsFactory($http, $rootScope) {
-        
+
         return {
             getStoreData: fnGetStoreData,
             getPriceFilters: fnGetPriceFilters,

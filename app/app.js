@@ -3,7 +3,8 @@
 
     angular.module('jifitiApp', [
         'ngRoute',
-        'jifitiApp.store'
+        'jifitiApp.store',
+        'jifitiApp.directives.productCard'
     ]).
     config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
