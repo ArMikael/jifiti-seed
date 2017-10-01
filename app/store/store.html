@@ -29,7 +29,7 @@
 
 
     <ul class="products-list">
-        <li class="product-item" ng-repeat="product in productsList | filter:priceRangeFilter | filter:genderTypeFilter">
+        <li class="product-item" ng-repeat="product in productsList | filter:priceRangeFilter | filter:genderTypeFilter track by $index">
             <product-card product="product"></product-card>
         </li>
     </ul>
