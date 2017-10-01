@@ -88,6 +88,10 @@ figure {
   font-family: serif;
 }
 
+.filter {
+  display: inline-block;
+}
+
 .product-filter {
   width: 100px;
   margin-right: 40px;
